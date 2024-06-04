@@ -6,6 +6,7 @@ import Confetti from "react-confetti";
 
 export const Home = () => {
   const [showSelect, setShowSelect] = useState(false);
+  const [isDisable, setisDisable] = useState(false);
   const [windowSize, setWindowSize] = useState<{
     height: number | undefined;
     width: number | undefined;
@@ -79,19 +80,35 @@ export const Home = () => {
       <div className="h-52 flex items-center justify-between">
         <div className="flex justify-center flex-1">
           <button
-            className="h-32 w-80 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => setShowSelect(true)}
+            className={`h-32 w-80 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+              isDisable ? "opacity-50" : ""
+            }`}
+            onClick={() => {
+              setShowSelect(true);
+              setisDisable(true);
+            }}
+            disabled={isDisable}
           >
-            <span className="text-white font-bold text-6xl ">select</span>
+            <span className="text-white font-bold text-6xl ">sold</span>
           </button>
         </div>
 
         <div className="flex-1 flex items-center justify-end">
-          <button className="h-12 w-32 bg-transparent border border-black hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded mr-8">
+          <button
+            className={`h-12 w-32 bg-transparent border border-black hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded mr-8 ${
+              isDisable ? "opacity-50" : ""
+            }`}
+            disabled={isDisable}
+          >
             Skip
           </button>
 
-          <button className="h-12 w-32 bg-transparent border border-black hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded mr-8">
+          <button
+            className={`h-12 w-32 bg-transparent border border-black hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded mr-8`}
+            onClick={() => {
+              setisDisable(false);
+            }}
+          >
             Next
           </button>
         </div>
