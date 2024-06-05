@@ -144,6 +144,7 @@ export const Home = () => {
                   setisDisable(false);
                   await getUser();
                 }}
+                disabled={!isDisable}
               >
                 Next
               </button>
