@@ -1,8 +1,8 @@
 import response from "../../../../middlewares/response-middleware";
 import prisma from "../../../../lib/db-config";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (_, res: NextResponse) => {
+export const GET = async (_:NextRequest, res: NextResponse) => {
   try {
     const skippedUser = await prisma.user.findMany({
       where: {

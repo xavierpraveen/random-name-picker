@@ -1,12 +1,12 @@
 import response from "../../../../../middlewares/response-middleware";
 import prisma from "../../../../../lib/db-config";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const PUT = async (_,{ params }: { params: { userId: string } }, res: NextResponse) => {
+export const PUT = async (_:NextRequest,{ params }: { params: { userId: string } }, res: NextResponse) => {
   try {
     await prisma.user.update({
       where: {
-        userId: params.userId
+        userId: Number(params.userId)
       },
       data:{
         status: 2
